@@ -15,19 +15,24 @@
     <div class="container">
         <div id="main" class="card card-body">
             <h2 class="title">Add Items</h2>
-            <form class="form-inline mb-3">
-                <input type="text" class="form-control mr-2">
+            <form id ="addForm" class="form-inline mb-3">
+                <input id="item" type="text" class="form-control mr-2">
                 <input type="submit" class ="btn btn-dark" value="Submit">
             </form>
             <h2 class="title">Items</h2>
-            <ul id="item" class="list-group">
-                <li class="list-group-item">Item1</li>
-                <li class="list-group-item">Item2</li>
-                <li class="list-group-item">Item3</li>
-                <li class="list-group-item">Item4</li>
+            <ul id="items" class="list-group">
+                <li class="list-group-item">Item1 <button class="btn btn-danger btn-sm float-right delete">x</button>
+                <button style="background-color: pink;" id="editBtn" class="edit">Edit</button></li>
+                 <li class="list-group-item">Item2 <button class="btn btn-danger btn-sm float-right delete">x</button>
+                    <button style="background-color: pink;" id="editBtn" class="edit">Edit</button></li>
+                 <li class="list-group-item">Item3 <button class="btn btn-danger btn-sm float-right delete">x</button>
+                    <button style="background-color: pink;" id="editBtn" class="edit">Edit</button></li>
+                <li class="list-group-item">Item4 <button class="btn btn-danger btn-sm float-right delete">x</button>
+                    <button style="background-color: pink;" id="editBtn" class="edit">Edit</button></li>
             </ul>
+            
         </div>
     </div>
-    <script src="dom.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
