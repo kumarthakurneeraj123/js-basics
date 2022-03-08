@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body background="/coffeeCup.jpg">
+    
+    <form onsubmit="onsignup(event)" align="middle" style=" max-width: 500px;
+    margin: auto; color:red;border: 2px solid red; border-radius: 2px; width: 520px;">
+        <h1>Book a Call</h1><hr><br><br><br>
+        <level for="b1">Book a call slot and our representative will call you within selected time slot</level><br><br><hr>
+        <level for="name">Name</level><br>
+        <input type="text" name="nameId" required><br><br>
+        <level for="email">Email:</level><br>
+        <input type="email" name="emailId" required><br><br>
+        <level for="phone">Phone:</level><br>
+        <input type="tel" name="phoneId" required><br><br>
+        <level for="time">Time for Call:</level><br>
+        <input type="date" name="date" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="time" name="time" required><br><br>
+        <input type="submit" value="Get a Call" style="height:40px;width: 520px;background-color: yellow;">
+    </form>
+        <script>
+            function onsignup(event){
+                event.preventDefault();
+                console.log("Name : " + event.target.nameId.value);
+                console.log("Email : "+event.target.emailId.value);
+                console.log("Phone No. :- "+event.target.phoneId.value);
+                console.log("Date : "+event.target.date.value);
+                console.log("Time :- "+ event.target.time.value);
+            }
+        </script>
+</body>
+</html>
