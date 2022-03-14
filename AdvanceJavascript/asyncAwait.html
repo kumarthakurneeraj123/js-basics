@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log('Person1 : shows ticket');
+    console.log('Person2 : shows ticket');
+    const preMovie = async ()=>{
+        const promiseWifeBringTicks = new Promise((resolve,reject)=>{
+        setTimeout(()=>resolve('ticket'),3000);
+    });
+    const getPopcorn = new Promise((resolve,reject)=>resolve('popcorn'));
+    const addButter = new Promise((resolve,reject)=>resolve('Butter'));
+    let ticket = await promiseWifeBringTicks;
+    console.log(`Wife : I have the ${ticket}`);
+        console.log('Husband : we should go in');
+        console.log('Wife : No, I am hungry');
+    let popcorn = await getPopcorn;
+    console.log(`Husband : I got some ${popcorn}`);
+        console.log('Husband : we should go in');
+        console.log('Wife : No, I need some butter on popcorn');
+    let butter = await addButter;
+    console.log(`Husband : I got some ${butter} on popcorn`);
+        console.log('Husband : we should go in');
+        console.log('Wife : Ok');
+        return 'ticket';
+    }
+    preMovie().then((m)=>console.log(`Person 3: shows ${m}`));
+    console.log('Person4 : shows ticket');
+    console.log('Person5 : shows ticket');
+</script>
+</html>
