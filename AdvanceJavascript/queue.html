@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue implementation in js</title>
+</head>
+<body>
+    <script>
+        class Queue{
+
+            constructor(){
+                this.queueArray = [];
+            }
+            enqueue(element){
+                this.queueArray.push(element);
+            }
+            dequeue(){
+                if(this.queueArray.length==0)
+                    return 'Queue underflow';
+                
+                    return this.queueArray.shift(); // remove first element from array and return it
+            }
+            isEmpty(){
+                return this.queueArray.length==0;
+            }
+            front(){
+                if(this.isEmpty())
+                    return 'No element in queue';
+                return this.queueArray[0];
+            }
+            rear(){
+                return this.queueArray[this.queueArray.length-1];
+            }
+        }
+        const q = new Queue();
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.enqueue(4);
+        q.enqueue(5);
+        q.enqueue(6);
+        q.enqueue(7);
+        console.log(q.dequeue());
+        console.log(q.isEmpty());
+    </script>
+</body>
+</html>

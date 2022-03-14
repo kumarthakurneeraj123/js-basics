@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise before Async Await</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log('Person1 : shows ticket');
+    console.log('Person2 : shows ticket');
+    const promiseWifeBringTicks = new Promise((resolve,reject)=>{
+        setTimeout(()=>resolve('ticket'),3000);
+    });
+    const getPopcorn = promiseWifeBringTicks.then((t)=>{
+        console.log('Wife : I have the tickets');
+        console.log('Husband : we should go in');
+        console.log('Wife : No, I am hungry');
+        return new Promise((resolve,reject)=>resolve(`${t} Popcorn`));
+    })
+    const getButter = getPopcorn.then((t)=>{
+        console.log('Husband : I got some popcorn');
+        console.log('Husband : we should go in');
+        console.log('Wife : No, I need some butter on popcorn');
+        return new Promise((resolve,reject)=>resolve(`${t} Butter`));
+    });
+    getButter.then((t)=>console.log(t));
+    console.log('Person4 : shows ticket');
+    console.log('Person5 : shows ticket');
+</script>
+</html>

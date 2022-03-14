@@ -25,8 +25,13 @@ var h1 = document.querySelector('header h1');
 newDiv.style.fontSize='40px';
 container.insertBefore(newDiv, h1);
 
-var list = document.querySelector('div .title');
+var newDiv1 = document.createElement('div');
+newDiv1.className = 'hello';
+newDiv1.id = 'hello1';
+newDiv1.setAttribute('title','Hello Div');
+var newDivText1 = document.createTextNode('Hello World');
+newDiv1.appendChild(newDivText1);
+console.log(newDiv1);
+var list = document.querySelector('div .list-group');
 var listRow = document.querySelector('div li');
-listRow.appendChild(newDiv,list);
-console.log(list);
-console.log(listRow);
+list.insertBefore(newDiv1,listRow);

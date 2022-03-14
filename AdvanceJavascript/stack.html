@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Implementation In JS</title>
+</head>
+<body>
+    <script>
+class Stack{
+    constructor(n){
+        this.stackArray = [];
+    }
+    push(element){
+        this.stackArray.push(element);
+        
+    }
+    pop(){
+        if(this.stackArray.length==0)
+            console.log("stack underflow");
+        return this.stackArray.pop();
+    }
+
+    isEmpty(){
+        return this.stackArray.length==0;
+    }
+    peek(){
+        
+            return this.stackArray[this.stackArray.length-1];
+    }
+}
+const stk = new Stack();
+stk.push(1);
+stk.push(2);
+stk.push(3);
+console.log(stk.pop());
+console.log(stk.pop());
+console.log(stk.isEmpty());
+console.log(stk.peek());
+console.log(stk.pop());
+
+console.log(stk.pop());
+
+    </script>
+</body>
+</html>
