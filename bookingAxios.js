@@ -10,22 +10,7 @@ function saveToLocalStorage(event) {
     }
     axios.post('https://crudcrud.com/api/0bbdef8171c8470fa9f04eb04e4bc0e9/Post',obj)
     .then((response)=>showNewUserOnScreen(response.data)).catch(err=>console.log('Something happended wrong!'));
-    // localStorage.setItem(obj.email, JSON.stringify(obj))
-    // showNewUserOnScreen(obj)
 }
-
-// window.addEventListener("DOMContentLoaded", () => {
-//     const localStorageObj = localStorage;
-//     const localstoragekeys  = Object.keys(localStorageObj)
-
-//     for(var i =0; i< localstoragekeys.length; i++){
-//         const key = localstoragekeys[i]
-//         const userDetailsString = localStorageObj[key];
-//         const userDetailsObj = JSON.parse(userDetailsString);
-//         showNewUserOnScreen(userDetailsObj)
-//     }
-// })
-
 function showNewUserOnScreen(user){
     const parentNode = document.getElementById('bookingList');
     const childHTML = `<li id=${user.email}> ${user.name} - ${user.email}
