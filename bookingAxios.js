@@ -8,11 +8,12 @@ function saveToCrudCrud(event) {
         name,
         email
     }
-    axios.post('https://crudcrud.com/api/0bbdef8171c8470fa9f04eb04e4bc0e9/Post',obj)
-    .then((response)=>showNewUserOnScreen(response.data)).catch(err=>console.log('Something happended wrong!'));
+    axios.post('https://crudcrud.com/api/9474b9bff09041d6acdc00f119c8cefd/Post',obj)
+    .then((response)=>console.log(response.data)).catch(err=>console.log('Something happended wrong!'));
 }
+let id;
 window.addEventListener('DOMContentLoaded',()=>{
-    axios.get('https://crudcrud.com/api/0bbdef8171c8470fa9f04eb04e4bc0e9/Post')
+    axios.get('https://crudcrud.com/api/9474b9bff09041d6acdc00f119c8cefd/Post')
     .then((response)=>{
         console.log(response.data.length);
         for(var i=0; i<response.data.length;i++){
@@ -20,34 +21,37 @@ window.addEventListener('DOMContentLoaded',()=>{
     }}).catch(err=>console.log('Something happended wrong!'));
 });
 function showNewUserOnScreen(user){
+
     const parentNode = document.getElementById('bookingList');
-    const childHTML = `<li id=${user.email}> ${user.name} - ${user.email}
-                            <button onclick=deleteUser('${user.email}')> Delete </button>
-                            <button onclick=editUser('${user}')> Edit </button>
+    const childHTML = `<li id=${user._id}> ${user._id} - ${user.name} - ${user.email}
+                            <button onclick=deleteUser("${user._id}")> Delete </button>
+                            <button onclick=editUser("${user._id},${user.name}")> Edit </button>
                          </li>`
 
     parentNode.innerHTML = parentNode.innerHTML + childHTML;
-   
 }
 
-// function editUser(user){
-//     console.log(user.email,user.name);
-//     var nameText = document.querySelector('#name');
-//     var emailText = document.querySelector('#email');
-//     emailText.value = user.email;
-//     nameText.value = user.name;          
-//     deleteUser(email);
+// function editUser(userId,name){
+//     console.log(userId,name);
+//     // var nameText = document.querySelector('#name');
+//     // var emailText = document.querySelector('#email');
+//     // emailText.value = UserEmail;
+//     //  nameText.value = userName;          
+//     //      removeUserFromScreen(userId);
 // }
 
-// function deleteUser(emailId){
-//     localStorage.removeItem(emailId);
-//     removeUserFromScreen(emailId);
+function deleteUser(userId){
+    //localStorage.removeItem(emailId);
+    axios.delete(`https://crudcrud.com/api/9474b9bff09041d6acdc00f119c8cefd/Post/${userId}`)
+    .then((response)=>removeUserFromScreen(userId)).catch(err=>console.error(err));
 
-// }
+    
 
-// function removeUserFromScreen(emailId){
-//     const parentNode = document.getElementById('bookingList');
-//     const childNodeToBeDeleted = document.getElementById(emailId);
+}
 
-//     parentNode.removeChild(childNodeToBeDeleted)
-// }
+function removeUserFromScreen(userId){
+    const parentNode = document.getElementById('bookingList');
+    const childNodeToBeDeleted = document.getElementById(userId);
+
+    parentNode.removeChild(childNodeToBeDeleted)
+}
