@@ -36,6 +36,28 @@ class Bst{
         }
     }
  }
+ preorderIteration(root){
+     if(root === null)
+        return;
+     let stk = [];
+     stk.push(root);
+     while(stk.length !== 0){
+        
+         let cur = stk.pop();
+         console.log(cur.data);
+         if(cur.right !== null)
+            stk.push(cur.right);
+        if(cur.left !== null)
+            stk.push(cur.left);
+     }
+ }
+ preorder(root){
+     if(root!==null){
+         console.log(root.data);
+         this.preorder(root.left);
+         this.preorder(root.right);
+     }
+ }
  inorder(root){
      if(root!==null){
     this.inorder(root.left);
@@ -62,5 +84,7 @@ bst.insert(8);
 bst.insert(12);
 bst.insert(17);
 bst.insert(25);
-bst.inorder(bst.root);
-console.log(bst.search(bst.root,15));
+//bst.inorder(bst.root);
+//bst.preorder(bst.root);
+bst.preorderIteration(bst.root);
+//console.log(bst.search(bst.root,15));
