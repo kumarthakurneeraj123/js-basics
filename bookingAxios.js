@@ -13,18 +13,38 @@ function saveToCrudCrud(event) {
         email
     }
   
-    axios.post('https://crudcrud.com/api/52bf9618410f41e5a83bcfeb91f5abca/Post',obj)
-    .then((response)=>console.log(response.data)).catch(err=>console.log('Something happended wrong!'))
+    const saveOnServer = async ()=>{
+        try
+        {
+            const token = await axios.post('https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post',obj)
+            console.log(token.data);
+         }
+        catch(err){
+            console.log('Something happended wrong!');
+        }
+}
+saveOnServer();
 }
 
 window.addEventListener('DOMContentLoaded',()=>{
-    axios.get('https://crudcrud.com/api/52bf9618410f41e5a83bcfeb91f5abca/Post')
-    .then((response)=>{
-        console.log(response.data.length);
-        for(var i=0; i<response.data.length;i++){
-        showNewUserOnScreen(response.data[i]);
-    }}).catch(err=>console.log('Something happended wrong!'));
+    const domContent = async ()=>{
+    try{
+      const domData = await axios.get('https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post');
+      console.log(domData.data.length);
+      for(var i=0; i<domData.data.length;i++){
+      showNewUserOnScreen(domData.data[i]);
+      }
+    }
+
+catch(err)
+{
+    console.log('Something happended wrong!');
+}
+}
+domContent();
 });
+
+
 function showNewUserOnScreen(user){
 
     const parentNode = document.getElementById('bookingList');
@@ -38,8 +58,10 @@ function showNewUserOnScreen(user){
 
 function editUser(userId){
     console.log(userId);
-    axios.get(`https://crudcrud.com/api/52bf9618410f41e5a83bcfeb91f5abca/Post/${userId}`)
-    .then((response)=>{
+    const edit = async ()=>{
+        try{
+
+   var response = await axios.get(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`);
     var nameText = document.querySelector('#name');
     var emailText = document.querySelector('#email');
     emailText.value = response.data.email;
@@ -54,23 +76,29 @@ function editUser(userId){
             name,
             email
         }
-      x=1;
-        axios.put(`https://crudcrud.com/api/52bf9618410f41e5a83bcfeb91f5abca/Post/${userId}`,obj)
-        .then((response)=>{
-             console.log(x);
-            console.log(response)}).catch(err=>console.log('Something happended wrong!'));
+        var response = axios.put(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`,obj);
+            console.log(response)
     }
     }
-    ).catch(err=>{console.error(err)})
+    catch(err)
+    {
+    console.error(err);
+}
+    }
+    edit();
 }
 
 function deleteUser(userId){
-    //localStorage.removeItem(emailId);
-    axios.delete(`https://crudcrud.com/api/52bf9618410f41e5a83bcfeb91f5abca/Post/${userId}`)
-    .then((response)=>removeUserFromScreen(userId)).catch(err=>console.error(err));
-
-    
-
+    const deleteUsr = async()=>{
+        try{
+    const response = axios.delete(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`);
+    removeUserFromScreen(userId);
+        }
+    catch(err){
+        console.error(err);
+    }
+}
+deleteUsr();
 }
 
 function removeUserFromScreen(userId){
