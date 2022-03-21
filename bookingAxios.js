@@ -76,7 +76,7 @@ function editUser(userId){
             name,
             email
         }
-        var response = axios.put(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`,obj);
+        var response = await axios.put(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`,obj);
             console.log(response)
     }
     }
@@ -91,7 +91,7 @@ function editUser(userId){
 function deleteUser(userId){
     const deleteUsr = async()=>{
         try{
-    const response = axios.delete(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`);
+    const response = await axios.delete(`https://crudcrud.com/api/e6891484562b480bbb63f8112a54cc7c/Post/${userId}`);
     removeUserFromScreen(userId);
         }
     catch(err){
